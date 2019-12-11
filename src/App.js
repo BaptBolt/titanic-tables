@@ -11,30 +11,17 @@ function App() {
     setNameFilter(event.target.value)
   }
 
-  const [survived, setSurvived]=useState('');
+  const [survived, setSurvived]=useState('No');
 
   const handleFilterSurvivedYes = () =>{
-    if(survived===''){
+    if(survived==='No'){
       setSurvived('Yes')
-    }else if(survived==='Yes'){
-      setSurvived('')
-    }
+    } 
   }
-  const[dead,setDead]=useState('');
 
   const handleFilterSurvivedNo = () =>{
-    if(dead===''){
-      setDead('No')
-    }else if(dead==='No'){
-      setDead('')
-    }
-  }
-
-  const[allPassengers, setAllPassengers]=useState('')
-
-  const handleFilterAll = () =>{
-    if(survived!=''){
-      setSurvived('')
+    if(survived==='Yes'){
+      setSurvived('No')
     }
   }
 
@@ -44,12 +31,12 @@ function App() {
       <div className="card">
         <div className="filters">
         <p className="title-filter">Filtres:</p>
-        <input className="filter" type="checkbox" id="scales" name="scales" onClick={handleFilterSurvivedYes} />
-        <label for="scales">Survivants</label>
-        <input className="filter" type="checkbox" id="horns" name="horns" onClick={handleFilterSurvivedNo}/>
-        <label for="horns">Décédés</label>
-        <input className="filter" type="checkbox" id="horns" name="horns" onClick={handleFilterAll}/>
-        <label for="horns">Voir tout les passagers</label>
+        <input className="filter" type="checkbox" id="survivants" name="survivants" onClick={handleFilterSurvivedYes} />
+        <label for="surviavnts">Survivants</label>
+        <input className="filter" type="checkbox" id="décédés" name="décédés" onClick={handleFilterSurvivedNo}/>
+        <label for="Décédés">Décédés</label>
+        <input className="filter" type="checkbox" id="all" name="all" />
+        <label for="all">Voir tout les passagers</label>
         </div>
         <div className="card-body">
           <table className="table table-striped">
@@ -61,9 +48,11 @@ function App() {
               </tr>
             </thead>
             <tbody>
-              {Tpassengers.filter((passenger) => {
-                console.log(passenger)
+              {Tpassengers
+              .filter((passenger) => {
                 return passenger.fields.name.includes(nameFilter)
+              }).filter((passenger)=>{
+                return passenger.fields.survived.includes(survived)
               }).map((passenger, index) => {
                 return <Passenger
                   key={index}

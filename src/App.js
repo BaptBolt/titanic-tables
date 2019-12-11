@@ -45,6 +45,7 @@ function App() {
                 <th scope="col">Name<input onChange={handleFilterNameInput} type='text' /></th>
                 <th scope="col">Age</th>
                 <th scope="col">Survived</th>
+                <th scope="col">N° Ticket</th>
               </tr>
             </thead>
             <tbody>
@@ -58,7 +59,8 @@ function App() {
                   key={index}
                   name={passenger.fields.name}
                   age={passenger.fields.age}
-                  survived={passenger.fields.survived} />
+                  survived={passenger.fields.survived}
+                  ticket={passenger.fields.ticket} />
               })}
             </tbody>
           </table>

@@ -7,6 +7,7 @@ const Passenger = (props) => {
       <td>{props.name}</td>
       <td>{props.age? Math.floor(props.age): 'N/A'}</td>
       <td>{props.survived}</td>
+      <td>{props.ticket}</td>
     </tr>
   )
 }

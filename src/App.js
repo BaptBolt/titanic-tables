@@ -21,6 +21,10 @@ function App() {
     setSurvived('No')
   }
 
+  const handleFilterAllPassengers = ()=>{
+    setSurvived(null)
+  }
+
 
   return (
     <div className="container">
@@ -31,7 +35,7 @@ function App() {
         <label for="surviavnts">Survivants</label>
         <input className="filter" type="checkbox" id="décédés" name="décédés" onClick={handleFilterSurvivedNo}/>
         <label for="Décédés">Décédés</label>
-        <input className="filter" type="checkbox" id="all" name="all" />
+        <input className="filter" type="checkbox" id="all" name="all" onClick={handleFilterAllPassengers}/>
         <label for="all">Voir tout les passagers</label>
         </div>
         <div className="card-body">
@@ -49,7 +53,15 @@ function App() {
               .filter((passenger) => {
                 return passenger.fields.name.includes(nameFilter)
               }).filter((passenger)=>{
-                return passenger.fields.survived.includes(survived)
+                if(survived===null){
+                  return <Passenger
+                  name={passenger.fields.name}
+                  age={passenger.fields.age}
+                  survived={passenger.fields.survived}
+                  ticket={passenger.fields.ticket} />
+                }else{
+                  return passenger.fields.survived.includes(survived)
+                }
               }).map((passenger, index) => {
                 return <Passenger
                   key={index}

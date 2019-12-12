@@ -11,18 +11,14 @@ function App() {
     setNameFilter(event.target.value)
   }
 
-  const [survived, setSurvived]=useState('No');
+  const [survived, setSurvived]=useState(null);
 
   const handleFilterSurvivedYes = () =>{
-    if(survived==='No'){
-      setSurvived('Yes')
-    } 
+    setSurvived('Yes')
   }
 
   const handleFilterSurvivedNo = () =>{
-    if(survived==='Yes'){
-      setSurvived('No')
-    }
+    setSurvived('No')
   }
 
 

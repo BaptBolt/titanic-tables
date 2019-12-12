@@ -29,15 +29,23 @@ function App() {
   return (
     <div className="container">
       <div className="card">
-        <div className="filters">
-        <p className="title-filter">Filtres:</p>
-        <input className="filter" type="checkbox" id="survivants" name="survivants" onClick={handleFilterSurvivedYes} />
-        <label for="surviavnts">Survivants</label>
-        <input className="filter" type="checkbox" id="décédés" name="décédés" onClick={handleFilterSurvivedNo}/>
-        <label for="Décédés">Décédés</label>
-        <input className="filter" type="checkbox" id="all" name="all" onClick={handleFilterAllPassengers}/>
-        <label for="all">Voir tout les passagers</label>
-        </div>
+      <p>Filtres:</p>
+
+<div>
+  <input type="radio" id="huey" name="status" value="huey"
+         onClick={handleFilterAllPassengers} />
+  <label for="huey">Liste complète des passagers</label>
+</div>
+
+<div>
+  <input type="radio" id="dewey" name="status" value="dewey" onClick={handleFilterSurvivedNo}/>
+  <label for="dewey">Décédés</label>
+</div>
+
+<div>
+  <input type="radio" id="louie" name="status" value="louie" onClick={handleFilterSurvivedYes}/>
+  <label for="louie">Survivant</label>
+</div>
         <div className="card-body">
           <table className="table table-striped">
             <thead>
